@@ -1,7 +1,26 @@
+const main = document.querySelector('.contenedor');
 const spinner = document.querySelector('#spinner');
+const previous = document.querySelector('#previous');
+const next = document.querySelector('#next');
 
+/*Rando de personajes mostrados*/
 let offset = 1;
-let limit = 11;
+let limit = 14;
+
+previous.addEventListener("click", () => {
+    /*offset 1 es la primer pantalla*/
+    if (offset != 1) {
+        offset -= 15;
+        removeChildNodes(main);
+        fetchCharacters(offset, limit);
+    }
+});
+
+next.addEventListener("click", () => {
+    offset += 15;
+    removeChildNodes(main);
+    fetchCharacters(offset, limit);
+});
 
 async function fetchCharacter(id) {
     const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
@@ -36,11 +55,16 @@ function createCharacter(personaje) {
         `
     );
 
-    const main = document.querySelector('.contenedor');
     main.append(character__card);
 
     /*Spinner oculto*/
     spinner.style.display = "none";
+}
+
+function removeChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
 }
 
 fetchCharacters(offset, limit);
