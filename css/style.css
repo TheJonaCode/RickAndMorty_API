@@ -58,6 +58,13 @@ body {
     margin-top: 20px;
 }
 
+#spinner {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
 .character__card {
     border-radius: 10px;
     padding: 10px;

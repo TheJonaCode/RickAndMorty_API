@@ -1,13 +1,18 @@
+const spinner = document.querySelector('#spinner');
+
 function getCharacters(done) {
-    const results = fetch('https://rickandmortyapi.com/api/character');
+    const results = fetch('https://rickandmortyapi.com/api/character/?page=24');
     results
         .then(response => response.json())
         .then(data => {
             done(data);
         });
+    /*Spinner se muestra*/
+    spinner.style.display = "block";
 }
 
 getCharacters(data => {
+
     data.results.forEach(personaje => {
         const character__card = document.createRange().createContextualFragment(
             /*HTML*/
@@ -24,7 +29,12 @@ getCharacters(data => {
             </div>
             `
         );
+
         const main = document.querySelector('.contenedor');
         main.append(character__card);
+
+        /*Spinner oculto*/
+        spinner.style.display = "none";
+
     });
 });
