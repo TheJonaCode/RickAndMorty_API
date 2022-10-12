@@ -58,10 +58,23 @@ body {
     margin-top: 20px;
 }
 
+#searchInput {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+#searchInput:focus {
+    background-color: #000;
+    color: #fff;
+}
+
 #spinner {
     display: none;
     position: absolute;
-    top: 50%;
+    top: 62%;
     left: 50%;
 }
 

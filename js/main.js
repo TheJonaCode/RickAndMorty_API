@@ -1,4 +1,5 @@
 const main = document.querySelector('.contenedor');
+const inputBusqueda = document.querySelector('#searchInput');
 const spinner = document.querySelector('#spinner');
 const previous = document.querySelector('#previous');
 const next = document.querySelector('#next');
@@ -21,6 +22,21 @@ next.addEventListener("click", () => {
     removeChildNodes(main);
     fetchCharacters(offset, limit);
 });
+
+function buscar(nombre) {
+    inputBusqueda.addEventListener('keyup', () => {
+        removeChildNodes(main);
+        /*Spinner se muestra*/
+        spinner.style.display = "block";
+        fetch(`https://rickandmortyapi.com/api/character/?name=${nombre.value}`)
+            .then(response => response.json())
+            .then(data => {
+                data.results.forEach(personaje => {
+                    createCharacter(personaje)
+                })
+            });
+    })
+}
 
 async function fetchCharacter(id) {
     const res = await fetch(`https://rickandmortyapi.com/api/character/${id}`);
@@ -56,7 +72,6 @@ function createCharacter(personaje) {
     );
 
     main.append(character__card);
-
     /*Spinner oculto*/
     spinner.style.display = "none";
 }
@@ -68,3 +83,4 @@ function removeChildNodes(parent) {
 }
 
 fetchCharacters(offset, limit);
+buscar(inputBusqueda);
