@@ -36,6 +36,7 @@ body {
 }
 
 .header .info {
+    width: 100%;
     text-align: center;
     color: #f9f6f6;
 }
@@ -149,4 +150,41 @@ body {
     margin-right: 10%;
     color: #80ffdb;
     border-radius: 10px;
+}
+
+
+/*Phones*/
+
+@media (max-width: 575.98px) {
+    html,
+    body {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    .header {
+        height: 120px;
+    }
+    .header .visual {
+        height: 100px;
+    }
+    .header .visual img {
+        margin-left: 25%;
+        width: 200px;
+        height: 100px;
+    }
+    .header .visual .icon {
+        font-size: 34px;
+    }
+    .header .info {
+        font-size: 12px;
+    }
+    .info__container {
+        display: none;
+    }
+    .img__container {
+        width: 100%;
+    }
+    .character__card {
+        padding: 2px;
+    }
 }
